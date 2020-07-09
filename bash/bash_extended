@@ -1,0 +1,15 @@
+# shorten the prompt
+PROMPT_DIRTRIM=5
+
+# aliases
+. ~/programs/CheemaFy/bash/bashrc
+. ~/programs/CheemaFy/bash/util_aliases
+. ~/programs/CheemaFy/bash/terminal_aliases
+. ~/programs/CheemaFy/bash/language_aliases
+
+alias refresh='source ~/programs/CheemaFy/bash/bash_extended'
+
+alias srbtest='
+function _srbtest(){
+    echo "CheemaFy is working"
+};_srbtest'

@@ -6,6 +6,7 @@ PROMPT_DIRTRIM=5
 . ~/programs/CheemaFy/bash/util_aliases
 . ~/programs/CheemaFy/bash/terminal_aliases
 . ~/programs/CheemaFy/bash/language_aliases
+. ~/programs/CheemaFy/bash/platform_dependent
 
 alias refresh='source ~/programs/CheemaFy/bash/bash_extended'
 

@@ -26,43 +26,6 @@ function _vim(){
 	fi
 };_vim'
 
-#nautilus
-help_disk="
-disk            -- open current location in finder
-disk loc        -- open given location in finder
-"
-alias disk='
-function _disk(){
-	if [ "$1" = "--help" ]
-	then
-		echo "$help_disk"
-		return
-	fi
-
-	if [ "$#" -eq 0 ]
-	then
-		nautilus . &
-	else
-		nautilus $@ &
-	fi
-};_disk'
-
-
-
-#terminal
-alias term='
-function _term(){
-	if [ "$#" -eq 0 ]
-	then
-		mate-terminal &
-	elif [ "$#" -eq 1 ]
-	then
-		mate-terminal &
-		sleep 1
-		exit #sexy
-	fi
-};_term'
-
 
 help_search_dir="
 search_dir <file> <relative locaton>...    -- search <dir> in given location

@@ -1,16 +1,3 @@
-# COPY FILES UTILITY
-
-# to copy file to clipboard
-# alias cpcb='xsel -b <'
-alias cpcb='
-function _cpcb(){
-	# cat $1 | clip
-	cat $1 | xclip -selection clipboard
-};_cpcb'
-
-
-
-
 alias copy='
 function _copy(){
 	mkdir -p ~/.CheemaFy/srb_clip_board

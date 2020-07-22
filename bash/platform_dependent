@@ -1,0 +1,42 @@
+# to copy file to clipboard
+# alias cpcb='xsel -b <'
+alias cpcb='
+function _cpcb(){
+	# cat $1 | clip
+	cat $1 | xclip -selection clipboard
+};_cpcb'
+
+
+alias term='
+function _term(){
+	if [ "$#" -eq 0 ]
+	then
+		mate-terminal &
+	elif [ "$#" -eq 1 ]
+	then
+		mate-terminal &
+		sleep 1
+		exit #sexy
+	fi
+};_term'
+
+
+help_disk="
+disk            -- open current location in file explorer
+disk loc        -- open given location in file explorer
+"
+alias disk='
+function _disk(){
+	if [ "$1" = "--help" ]
+	then
+		echo "$help_disk"
+		return
+	fi
+
+	if [ "$#" -eq 0 ]
+	then
+		nautilus . &
+	else
+		nautilus $@ &
+	fi
+};_disk'

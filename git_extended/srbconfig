@@ -3,4 +3,4 @@
     srbtest = log --decorate --oneline --graph -8
 
 [core]
-    excludesfile = ~/programs/CheemaFy/git_extended/gitignore_global
+    excludesfile = ~/programs/CheemaFy/.gitignore

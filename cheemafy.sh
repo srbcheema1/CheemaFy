@@ -19,7 +19,7 @@ read ans
 bashrc_content="
 # CheemaFy bash
 if [ -f ~/.CheemaFy/installed ]; then
-    if [ -f ~/programs/CheemaFy/bash/bash_setup ]; then
+    if [ -f ~/programs/CheemaFy/bash/setup_bash ]; then
         . ~/programs/CheemaFy/bash/setup_bash
     fi
     if [ -f ~/.CheemaFy/temp_bashrc ]; then

@@ -88,7 +88,7 @@ function _rm(){
     then
         shift #sexy
 
-        echo "do you want to delete permanently : $@";
+        echo -n "do you want to delete permanently : $@ : ";
         read ans;
         if [ $ans = "y" ]
         then
@@ -185,7 +185,7 @@ function _trash(){
 
     elif [ "$1" = "--empty" ]
     then
-        echo -n "do you want to delete trash permanently ";
+        echo -n "do you want to delete trash permanently : ";
         read ans;
         if [ $ans = "y" ]
         then

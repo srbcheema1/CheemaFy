@@ -22,7 +22,7 @@ function _venv(){
             do
                 cd ..
                 where_=`pwd`
-                if [ "$where_" = "$HOME" ]
+                if [[ "$where_" = "$HOME" || "$where_" = "/" ]]
                 then
                     cd $pwd_
                     virtualenv venv2
@@ -48,10 +48,10 @@ function _venv(){
             do
                 cd ..
                 where_=`pwd`
-                if [ "$where_" = "$HOME" ]
+                if [[ "$where_" = "$HOME" || "$where_" = "/" ]]
                 then
                     cd $pwd_
-                    virtualenv venv3
+                    python3 -m venv venv3
                     source ./venv3/bin/activate;
                     break
                 fi

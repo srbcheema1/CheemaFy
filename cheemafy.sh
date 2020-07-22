@@ -27,12 +27,17 @@ if [ -f ~/.CheemaFy/installed ]; then
 	fi
 fi
 "
-gitconfig_content="
-[include]
-	path = ~/.CheemaFy/installed
+temp_bashc_content="
+_srb_cpcb='xclip -selection clipboard'
+_srb_disk='nautilus'
+_srb_terminal='gnome-terminal'
 "
 vimrc_content="
 :so ~/programs/CheemaFy/vim_scripts/setup.vim
+"
+gitconfig_content="
+[include]
+	path = ~/.CheemaFy/installed
 "
 installed_content="
 [include]
@@ -46,7 +51,9 @@ if [ $ans = "y" ]
 then
 	echo "$vimrc_content" >> ~/.vimrc
 	echo "$bashrc_content" >> ~/.bashrc
+	echo "$bashrc_content" > ~/.bash_profile
 	echo "$gitconfig_content" >> ~/.gitconfig
+	echo "$temp_bashrc_content" > ~/.CheemaFy/temp_bashrc
 fi
 
 #install Vundle in VIM and plugins

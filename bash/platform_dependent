@@ -3,7 +3,8 @@
 alias cpcb='
 function _cpcb(){
 	# cat $1 | clip
-	cat $1 | xclip -selection clipboard
+	# cat $1 | xclip -selection clipboard
+	cat $1 | $_srb_cpcb
 };_cpcb'
 
 

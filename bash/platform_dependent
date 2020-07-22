@@ -12,10 +12,10 @@ alias term='
 function _term(){
 	if [ "$#" -eq 0 ]
 	then
-		mate-terminal &
+		$_srb_term &
 	elif [ "$#" -eq 1 ]
 	then
-		mate-terminal &
+		$_srb_term &
 		sleep 1
 		exit #sexy
 	fi
@@ -36,8 +36,8 @@ function _disk(){
 
 	if [ "$#" -eq 0 ]
 	then
-		nautilus . &
+		$_srb_disk . &
 	else
-		nautilus $@ &
+		$_srb_disk $@ &
 	fi
 };_disk'

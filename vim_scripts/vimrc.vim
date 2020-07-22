@@ -1,19 +1,19 @@
 "Vundle code
-set nocompatible															"be iMproved, required
-filetype only																	"required
+set nocompatible															"required
+filetype on																		"required
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
 	Plugin 'VundleVim/Vundle.vim'								"vundle
 	Plugin 'bronson/vim-trailing-whitespace'		"causes all trailing whitespace to be highlighted in red
 	Plugin 'jiangmiao/auto-pairs'								"auto complete pairs of '' []  {}
-	Plugin 'scrooloose/nerdcommenter'						"commentin
+	Plugin 'scrooloose/nerdcommenter'						"commenting
 
 
 	"to remove a plugin comment it and run :PluginClean
 call vundle#end()															"required
-filetype plugin indent only										"required
-filetype plugin only													"required for nerdcommenter
+filetype plugin indent on											"required
+filetype plugin on														"required for nerdcommenter
 "end Vundle code
 
 

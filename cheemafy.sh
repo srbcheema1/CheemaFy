@@ -27,10 +27,10 @@ if [ -f ~/.CheemaFy/installed ]; then
 	fi
 fi
 "
-temp_bashc_content="
+temp_bashrc_content="
 _srb_cpcb='xclip -selection clipboard'
 _srb_disk='nautilus'
-_srb_terminal='gnome-terminal'
+_srb_term='gnome-terminal'
 "
 vimrc_content="
 :so ~/programs/CheemaFy/vim_scripts/setup.vim

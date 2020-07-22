@@ -1,5 +1,5 @@
 # scripts
 if [ -d "$HOME/programs/CheemaFy/srbScripts" ]; then
-    export PATH=$PATH:"$HOME/programs/CheemaFy/srbScripts"
-    #export PYTHONPATH=$PYTHONPATH:"$HOME/programs/CheemaFy/srbScripts"
+	export PATH=$PATH:"$HOME/programs/CheemaFy/srbScripts"
+	#export PYTHONPATH=$PYTHONPATH:"$HOME/programs/CheemaFy/srbScripts"
 fi

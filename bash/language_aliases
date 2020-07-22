@@ -6,63 +6,63 @@ else it will create venv3 for python3
 alias venv='
 #venv should be installed using sudo apt-get install python3-venv
 function _venv(){
-    if [ "$1" = "--help" ]
-    then
-        echo "$help_venv"
-        return
-    fi
-    if [ "$1" = "2" ]
-    then
-        if [ -d "venv2" ]
-        then
-            source ./venv2/bin/activate;
-        else
-            pwd_=`pwd`
-            while [ 1 ]
-            do
-                cd ..
-                where_=`pwd`
-                if [[ "$where_" = "$HOME" || "$where_" = "/" ]]
-                then
-                    cd $pwd_
-                    virtualenv venv2
-                    source ./venv2/bin/activate;
-                    break
-                fi
-                if [ -d "venv2" ]
-                then
-                    echo "found venv at "$where_
-                    source ./venv2/bin/activate;
-                    break
-                fi
-            done
-            cd $pwd_
-        fi
-    else
-        if [ -d "venv3" ]
-        then
-            source ./venv3/bin/activate;
-        else
-            pwd_=`pwd`
-            while [ 1 ]
-            do
-                cd ..
-                where_=`pwd`
-                if [[ "$where_" = "$HOME" || "$where_" = "/" ]]
-                then
-                    cd $pwd_
-                    python3 -m venv venv3
-                    source ./venv3/bin/activate;
-                    break
-                fi
-                if [ -d "venv3" ]
-                then
-                    echo "found venv at "$where_
-                    source ./venv3/bin/activate;
-                    break
-                fi
-            done
-            cd $pwd_
-        fi
-    fi
+	if [ "$1" = "--help" ]
+	then
+		echo "$help_venv"
+		return
+	fi
+	if [ "$1" = "2" ]
+	then
+		if [ -d "venv2" ]
+		then
+			source ./venv2/bin/activate;
+		else
+			pwd_=`pwd`
+			while [ 1 ]
+			do
+				cd ..
+				where_=`pwd`
+				if [[ "$where_" = "$HOME" || "$where_" = "/" ]]
+				then
+					cd $pwd_
+					virtualenv venv2
+					source ./venv2/bin/activate;
+					break
+				fi
+				if [ -d "venv2" ]
+				then
+					echo "found venv at "$where_
+					source ./venv2/bin/activate;
+					break
+				fi
+			done
+			cd $pwd_
+		fi
+	else
+		if [ -d "venv3" ]
+		then
+			source ./venv3/bin/activate;
+		else
+			pwd_=`pwd`
+			while [ 1 ]
+			do
+				cd ..
+				where_=`pwd`
+				if [[ "$where_" = "$HOME" || "$where_" = "/" ]]
+				then
+					cd $pwd_
+					python3 -m venv venv3
+					source ./venv3/bin/activate;
+					break
+				fi
+				if [ -d "venv3" ]
+				then
+					echo "found venv at "$where_
+					source ./venv3/bin/activate;
+					break
+				fi
+			done
+			cd $pwd_
+		fi
+	fi
 };_venv'

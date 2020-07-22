@@ -5,25 +5,25 @@ alias cf='cd ~/programs/CheemaFy/'
 # to run original command
 alias orig='
 function _orig(){
-    if [ $1 = "--help" ]
-    then
-        echo "helps to execute orig commands without alias effect"
-        return
-    fi
-    echo "$@"
-    $@
+	if [ $1 = "--help" ]
+	then
+		echo "helps to execute orig commands without alias effect"
+		return
+	fi
+	echo "$@"
+	$@
 };_orig'
 
 
 #my bad habbit to type vim again and again
 alias vim='
 function _vim(){
-    if [ -d "$1" ]
-    then
-        cd "$1";
-    else
-        vim -p $@ -c ":normal zR" -c ":loadview";
-    fi
+	if [ -d "$1" ]
+	then
+		cd "$1";
+	else
+		vim -p $@ -c ":normal zR" -c ":loadview";
+	fi
 };_vim'
 
 #nautilus
@@ -33,18 +33,18 @@ disk loc        -- open given location in finder
 "
 alias disk='
 function _disk(){
-    if [ "$1" = "--help" ]
-    then
-        echo "$help_disk"
-        return
-    fi
+	if [ "$1" = "--help" ]
+	then
+		echo "$help_disk"
+		return
+	fi
 
-    if [ "$#" -eq 0 ]
-    then
-        nautilus . &
-    else
-        nautilus $@ &
-    fi
+	if [ "$#" -eq 0 ]
+	then
+		nautilus . &
+	else
+		nautilus $@ &
+	fi
 };_disk'
 
 
@@ -52,15 +52,15 @@ function _disk(){
 #terminal
 alias term='
 function _term(){
-    if [ "$#" -eq 0 ]
-    then
-        mate-terminal &
-    elif [ "$#" -eq 1 ]
-    then
-        mate-terminal &
-        sleep 1
-        exit #sexy
-    fi
+	if [ "$#" -eq 0 ]
+	then
+		mate-terminal &
+	elif [ "$#" -eq 1 ]
+	then
+		mate-terminal &
+		sleep 1
+		exit #sexy
+	fi
 };_term'
 
 
@@ -69,15 +69,15 @@ search_dir <file> <relative locaton>...    -- search <dir> in given location
 "
 alias _search_dir='
 function __search_dir(){
-    if [ "$#" -eq 1 ]
-    then
-        find . -type d | grep $1
-    elif [ "$#" -eq 2 ]
-    then
-        find $2 -type d | grep $1
-    else
-        echo "$help_search_dir"
-    fi
+	if [ "$#" -eq 1 ]
+	then
+		find . -type d | grep $1
+	elif [ "$#" -eq 2 ]
+	then
+		find $2 -type d | grep $1
+	else
+		echo "$help_search_dir"
+	fi
 };__search_dir'
 
 help_search_file="
@@ -85,15 +85,15 @@ search_file <file> <relative locaton>...    -- search <file> in given location
 "
 alias _search_file='
 function __search_file(){
-    if [ "$#" -eq 1 ]
-    then
-        find . -type f | grep $1
-    elif [ "$#" -eq 2 ]
-    then
-        find $2 -type f | grep $1
-    else
-        echo "$help_search_file"
-    fi
+	if [ "$#" -eq 1 ]
+	then
+		find . -type f | grep $1
+	elif [ "$#" -eq 2 ]
+	then
+		find $2 -type f | grep $1
+	else
+		echo "$help_search_file"
+	fi
 };__search_file'
 
 help_search_me="
@@ -101,42 +101,42 @@ search_me <arg1> <arg2> <arg3> <arg4>...    -- search <arg1> in <arg2> excluding
 "
 alias search_me='
 function _search_me(){
-    if [ "$1" = "--help" ]
-    then
-        echo "$help_search_me"
-        return
-    fi
+	if [ "$1" = "--help" ]
+	then
+		echo "$help_search_me"
+		return
+	fi
 
-    grep_cmd="grep -i -nr"
-    # i for ignore casesenstivity
-    # I for ignoring binary files
-    # n for numbering
-    # r for recursive
+	grep_cmd="grep -i -nr"
+	# i for ignore casesenstivity
+	# I for ignoring binary files
+	# n for numbering
+	# r for recursive
 
-    if [ "$#" -eq 1 ]
-    then
-        grep -i -I -nr "$1" .
+	if [ "$#" -eq 1 ]
+	then
+		grep -i -I -nr "$1" .
 
-    elif [ "$#" -eq 2 ]
-    then
-        grep -i -I -nr "$1" "$2"
+	elif [ "$#" -eq 2 ]
+	then
+		grep -i -I -nr "$1" "$2"
 
-    else
-        excludes=""
-        for i in `seq 3 $#` #sexy
-        do
-            if [ -d "${!i}" ] #sexy
-            then
-                excludes=$excludes" --exclude-dir=${!i}"
-            fi
-            if [ -f "${!i}" ]
-            then
-                excludes=$excludes" --exclude=${!i}"
-            fi
-        done
-        echo "grep -i -I -nr $1 $2 $excludes"
-        grep -i -I -nr $1 $2 $excludes
-    fi
+	else
+		excludes=""
+		for i in `seq 3 $#` #sexy
+		do
+			if [ -d "${!i}" ] #sexy
+			then
+				excludes=$excludes" --exclude-dir=${!i}"
+			fi
+			if [ -f "${!i}" ]
+			then
+				excludes=$excludes" --exclude=${!i}"
+			fi
+		done
+		echo "grep -i -I -nr $1 $2 $excludes"
+		grep -i -I -nr $1 $2 $excludes
+	fi
 };_search_me'
 
 

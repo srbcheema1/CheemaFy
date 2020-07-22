@@ -1,4 +1,4 @@
 if [ -f ~/.CheemaFy/installed ]; then
-    . ~/programs/CheemaFy/bash/bash_extended
-    . ~/programs/CheemaFy/bash/bash_variables
+	. ~/programs/CheemaFy/bash/bash_extended
+	. ~/programs/CheemaFy/bash/bash_variables
 fi

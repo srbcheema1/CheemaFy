@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 if [ "$1" = "--remove" ]
 then
-    echo "removing CheemaFy"
-    mv ~/.CheemaFy/installed ~/.CheemaFy/not_installed
-    exit
+	echo "removing CheemaFy"
+	mv ~/.CheemaFy/installed ~/.CheemaFy/not_installed
+	exit
 fi
 
 
@@ -19,41 +19,41 @@ read ans
 bashrc_content="
 # CheemaFy bash
 if [ -f ~/.CheemaFy/installed ]; then
-    if [ -f ~/programs/CheemaFy/bash/setup_bash ]; then
-        . ~/programs/CheemaFy/bash/setup_bash
-    fi
-    if [ -f ~/.CheemaFy/temp_bashrc ]; then
-        . ~/.CheemaFy/temp_bashrc
-    fi
+	if [ -f ~/programs/CheemaFy/bash/setup_bash ]; then
+		. ~/programs/CheemaFy/bash/setup_bash
+	fi
+	if [ -f ~/.CheemaFy/temp_bashrc ]; then
+		. ~/.CheemaFy/temp_bashrc
+	fi
 fi
 "
 gitconfig_content="
 [include]
-    path = ~/.CheemaFy/installed
+	path = ~/.CheemaFy/installed
 "
 vimrc_content="
 :so ~/programs/CheemaFy/vim_scripts/setup.vim
 "
 installed_content="
 [include]
-    path = ~/programs/CheemaFy/git_extended/gitconfig
-    path = /Users/srb/programs/CheemaFy/git_extended/srbconfig
+	path = ~/programs/CheemaFy/git_extended/gitconfig
+	path = /Users/srb/programs/CheemaFy/git_extended/srbconfig
 "
 
 
 echo "$installed_content" >> ~/.CheemaFy/installed
 if [ $ans = "y" ]
 then
-    echo "$vimrc_content" >> ~/.vimrc
-    echo "$bashrc_content" >> ~/.bashrc
-    echo "$gitconfig_content" >> ~/.gitconfig
+	echo "$vimrc_content" >> ~/.vimrc
+	echo "$bashrc_content" >> ~/.bashrc
+	echo "$gitconfig_content" >> ~/.gitconfig
 fi
 
 #install Vundle in VIM and plugins
 if ! [ -d "$HOME"/.vim/bundle/ ]
 then
-    echo installing vim bundle
-    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	echo installing vim bundle
+	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 vim hell -c ":PluginInstall" -c ":q!" -c ":q!"
 

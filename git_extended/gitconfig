@@ -1,50 +1,46 @@
 [alias]
-	showdown = log --decorate --oneline --graph -8
+	# logging
 	history = log --decorate --oneline --all --graph
-	wrk = log --decorate --oneline --all --graph -14
-	work = log --decorate --pretty=format:\"%C(yellow)%h %Cgreen%d %Creset %s , %Cblue%cn , %Cred %ad\" --graph --all --date=short
-
-	# unstage the file if added
-	unstage = reset HEAD --
-	# untrach a file
-	untrack = rm --cached -r --
-	# undo the changes to a file
-	undo = checkout --
+	showdown = log --decorate --pretty=format:\"%C(yellow)%h %Cgreen%d %Creset %s , %Cblue%cn , %Cred %ad\" --graph --stat -8 --date=short
+	history-color = log --decorate --pretty=format:\"%C(yellow)%h %Cgreen%d %Creset %s , %Cblue%cn , %Cred %ad\" --graph --all --date=short
+	# information about a commit
+	# use : git info <commit hash>
+	commit-info = show --stat --oneline --decorate --pretty=format:\"%C(yellow)%h %Cgreen%d %Creset %s , %Cblue%cn , %Cred %ad\"
 
 	# verify before commiting
 	verify = diff --cached
+	# unstage the file if added
+	unstage = reset HEAD --
+	# untrack a file
+	untrack = rm --cached -r --
+	# undo the changes to a file
+	unchange = checkout --
 
-	# information about a commit
-	info = show --stat
-	# use : git info <commit hash>
-
-	scommit = commit --signoff
-
-	wordcount = grep --count --ignore-case
-
-	# great way of diff
-	wdiff = diff --word-diff
-
-	# a better way of blame read blame.wrk
-	logblame = log -p -M --follow --stat --
-
-	# a beautiful command reflog .... it keeps trach of all the activities in last week
-	reflog =  log -g --abbrev-commit --pretty=oneline
+	# compare two files
+	# use as git srb-compare file1 file2
+	compare = diff --no-index --
 
 	# see changes in small way
 	# use git changes HEAD~3 HEAD
 	changes = diff --stat
 	changesv = diff --name-status
 
-	# changed file names in commit
-	changedf = diff-index --diff-filter=AM --name-only
+	# git wont ask password again for this repo
+	savepassword = config credential.helper store
 
-	# ignore a tracked file. for example cmakelists
+	# ignore a tracked file. for example cmakelists (it wont be shown changed then)
 	ignorelocally = update-index --assume-unchanged
 	ignoreremove = update-index --no-assume-unchanged
 
-	# git wont ask password again for this repo
-	savepassword = config credential.helper store
+	# how many times a word appears somewhere in files
+	wordcount = grep --count --ignore-case
+
+	# a better way of blame read blame.wrk
+	logblame = log -p -M --oneline --follow --stat --
+
+	# a beautiful command reflog .... it keeps trach of all the activities in last week
+	reflog =  log -g --abbrev-commit --pretty=oneline
+
 
 	# to find nearest common ancestor
 	# git diverges <branch1> <branch2>

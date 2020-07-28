@@ -63,6 +63,10 @@
 [diff]
 	tool = vimdiff
 
+[core]
+    # this will not work if value is overridden in srbconfig, we can have only one global excludesfile
+	excludesfile = ~/.CheemaFy/global_gitignore
+
 # we cannot create alias of original command
 # signing every commit is useless - torvalds
 # https://stackoverflow.com/questions/10161198/is-there-a-way-to-autosign-commits-in-git-with-a-gpg-key

@@ -14,6 +14,18 @@ function _orig(){
 	$@
 };_orig'
 
+# to log into a file
+alias logit='
+function _logit(){
+	if [ $1 = "--help" ]
+	then
+		echo "helps to send output of command to a file named srb_log.txt"
+		return
+	fi
+	echo "$@ 2>&1 | tee srb_log.txt"
+	$@ 2>&1 | tee srb_log.txt
+};_logit'
+
 
 #my bad habbit to type vim again and again
 alias vim='

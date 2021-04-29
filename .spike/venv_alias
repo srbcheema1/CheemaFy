@@ -1,9 +1,3 @@
-#to set virtual env
-help_venv="
-if you specify argument 2 it will create venv2 for python2
-if you specify argument 3 it will create venv3 for python3
-for any other argument it will create that virtualenv for python3 (or python2 if name ends with 2)
-"
 alias venv='
 #venv should be installed using sudo apt-get install python3-venv
 function _venv(){
@@ -12,7 +6,40 @@ function _venv(){
 		return
 	fi
 	pwd_=`pwd`
-	if [ "$1" = "2" ]; then
+	if [ "$1" = "--any" ]; then
+		while [ 1 ]; do
+			where_=`pwd`
+			if [[ "$where_" = "$HOME" || "$where_" = "/" ]]; then
+				echo "unable to find any virtual environment, please create one, use venv --help"
+				break
+			elif [ -d "venv" ]; then
+				echo "found venv at "$where_
+				source ./venv/bin/activate;
+				break
+			elif [ -d "venv2" ]; then
+				echo "found venv2 at "$where_
+				source ./venv2/bin/activate;
+				break
+			elif [ -d "venv3" ]; then
+				echo "found venv3 at "$where_
+				source ./venv3/bin/activate;
+				break
+			elif [ -d "env" ]; then
+				echo "found env at "$where_
+				source ./env/bin/activate;
+				break
+			elif [ -d ".venv" ]; then
+				echo "found .venv at "$where_
+				source ./.venv/bin/activate;
+				break
+			elif [ -d ".env" ]; then
+				echo "found .env at "$where_
+				source ./.env/bin/activate;
+				break
+			fi
+			cd ..
+		done
+	elif [ "$1" = "2" ]; then
 		while [ 1 ]; do
 			where_=`pwd`
 			if [[ "$where_" = "$HOME" || "$where_" = "/" ]]; then
@@ -65,7 +92,21 @@ function _venv(){
 			cd ..
 		done
 	else
-		echo "please provide some argument as name of virtualenv to be created/used"
+		while [ 1 ]; do
+			where_=`pwd`
+			if [[ "$where_" = "$HOME" || "$where_" = "/" ]]; then
+				cd $pwd_
+				python3 -m venv venv3
+				source ./venv3/bin/activate;
+				break
+			fi
+			if [ -d "venv3" ]; then
+				echo "found venv3 at "$where_
+				source ./venv3/bin/activate;
+				break
+			fi
+			cd ..
+		done
 	fi
 	cd $pwd_
 };_venv'

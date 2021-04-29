@@ -49,19 +49,16 @@ function _paste(){
 
 #my bad habbit to type rm
 help_rm="
-rm file1 folder                     --- will move them to trash
-rm -p file1 file2                   --- will delete them permanemtly and will ask for perission
+rm file1 folder2                   		--- will move them to trash, no matter file or folder
+rm -p file1 folder2                   --- will delete them permanemtly and will ask for perission
 
 ---------------------------------------------------------------------------------------------------
 
-rm <file/folder> <folder/file>      --- move to trash whatever it is
+NOTE : Doesn't require \"-r\" flag for removing directory (it is quite smart to detect)
 
-NOTE : this commandline utility doesn;t require \"-r\" flag for removing directory
-	   it is quite smart to detect
+	   All other flags (-r, -f, -rf) other than '-p' will be ignored and items moved to trash.
 
-	   All other flags (-r, -f, -rf) than '-p' will be ignored and items moved to trash.
-
-	   After removing an item you can locate it in trash find position of trash using trash loc
+	   After removing an item you can locate it in trash. (find position of trash using trash loc)
 "
 alias rm='
 function _rm(){

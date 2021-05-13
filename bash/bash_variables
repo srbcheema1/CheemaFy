@@ -5,4 +5,4 @@ if [ -d "$HOME/programs/CheemaFy/srbScripts" ]; then
 fi
 
 # shorten the prompt
-PROMPT_DIRTRIM=5
+PROMPT_DIRTRIM=3

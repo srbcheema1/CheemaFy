@@ -11,7 +11,7 @@ function _copy(){
 
 	cp -r $@ ~/.CheemaFy/srb_clip_board/
 	echo copied $@
-	$OLDPWD=$_oldpwd
+	OLDPWD=$_oldpwd
 };_copy'
 
 
@@ -28,7 +28,7 @@ function _cut(){
 
 	mv $@ ~/.CheemaFy/srb_clip_board/
 	echo moved $@
-	$OLDPWD=$_oldpwd
+	OLDPWD=$_oldpwd
 };_cut'
 
 
@@ -44,6 +44,12 @@ function _paste(){
 		cp -r ~/.CheemaFy/srb_clip_board/. ./
 	fi
 };_paste'
+
+
+
+function set_prompt() {
+	PROMPT_DIRTRIM=$1
+}
 
 
 

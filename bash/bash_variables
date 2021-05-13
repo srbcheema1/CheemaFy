@@ -1,5 +1,8 @@
 # scripts
 if [ -d "$HOME/programs/CheemaFy/srbScripts" ]; then
 	export PATH=$PATH:"$HOME/programs/CheemaFy/srbScripts"
-	#export PYTHONPATH=$PYTHONPATH:"$HOME/programs/CheemaFy/srbScripts"
+	#export PYTHONPATH=$PYTHONPATH:"$HOME/programs/CheemaFy/srbScripts" # for modules
 fi
+
+# shorten the prompt
+PROMPT_DIRTRIM=5

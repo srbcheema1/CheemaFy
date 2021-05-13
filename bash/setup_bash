@@ -1,4 +1,6 @@
-if [ -f ~/.CheemaFy/installed ]; then
+if [ -f ~/.CheemaFy/enabled ]; then
 	. ~/programs/CheemaFy/bash/bash_extended
 	. ~/programs/CheemaFy/bash/bash_variables
 fi
+
+. ~/programs/CheemaFy/bash/cheemafy_main.sh

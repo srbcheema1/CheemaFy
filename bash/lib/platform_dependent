@@ -1,0 +1,25 @@
+# alias cpcb='xsel -b <'
+alias cpcb='
+function _cpcb(){   # to copy file to clipboard
+	cat $1 | $_srb_cpcb   #values of $_srb_cpcb are "clip" or "xclip -selection clipboard"
+};_cpcb'
+
+
+
+help_disk="
+disk              -- open current location in file explorer
+disk <loc>        -- open given location in file explorer
+"
+alias disk='
+function _disk(){
+	if [ "$1" = "--help" ]; then
+		echo "$help_disk"
+		return
+	fi
+
+	if [ "$#" -eq 0 ]; then
+		$_srb_disk . &
+	else
+		$_srb_disk $@ &
+	fi
+};_disk'

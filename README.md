@@ -5,52 +5,35 @@
 
 ## CheemaFy is a special tool to ease your experience with Linux
 
- * Requirements
-
-   * git
-   * python3
-   * lsb-release
-
 
  * Steps to intall CheemaFy
 
-   * Install the requirements
-   * Clone the this repo to your PC.
-   * `git clone https://github.com/srbcheema1/CheemaFy`
+   * Clone the this repo to your PC using `git clone https://github.com/srbcheema1/CheemaFy`
    * Now change directory to CheemaFy. `cd CheemaFy`
-   * Its good to update your system before starting `sudo apt-get update`
    * Now install CheemaFy by running the command `./CheemaFy`
-   * You will be asked whether to install vim-plugins or not, reply 'y' if you are `vim user`
-   * Just wait for the installation to complete.
    * In case you see `Thanks for using CheemaFy`, installation is complete
-   * Enjoy CheemaFy.
 
 
  * Some configurations asked during installation:
 
-   * `Do you want to configure home-files yes/no :`
+   * `Do you want to configure home_files (y/n) : `
    * This is to ask if you want to configure home files or not
-   * It includes .bashrc .gitconfig .vimrc
-   * This command is to be run only once. even if you install cheemafy again
-   * Else it will add redundant lines in your home-config files
-   * `Do you want to add vim plugins y/n :`
-   * You may run this if you want to install plugins on the go
-   * This step is bit time consuming. As You-completeme plugin takes time to get installed
-   * You may skip this step but it is recommended not to.
+   * It includes .bashrc .gitconfig .vimrc .bash_profile
+   * Do not run this command again. Else it will add duplicate lines in your home-config files
+   * `Do you want to configure vim plugins (not recommended) (y/n) : `
+   * skip this step as it is in dev stage.
 
 
  * Steps to toggle on/off CheemaFy
 
-   * To turn off jsut run the command
-   * Just rename the installed file( in ~/.CheemaFy ) to not-installed or anything else
-   * `mv ~/.CheeemaFy/installed ~/.CheemaFy/not_installed`
-   * Similary you can turn it on again by renaming that file back to installed
+   * To turn off just run the command `cheemaFy --disable`
+   * Similary you can turn it on again by `cheemaFy --enable`
 
 
  * Steps to remove CheemaFy
 
    * Delete the folder ~/.CheemaFy
-   * Remove the files of CheemaFy from .bashrc .gitconfig .vimrc
+   * Remove the files of CheemaFy from .bashrc .gitconfig .vimrc .bash_profile
    * Please provide me your suggestions if it was creating any problem. I will surely remove that.
 
 

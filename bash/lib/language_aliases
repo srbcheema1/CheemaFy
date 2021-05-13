@@ -17,6 +17,7 @@ function _venv(){
 			where_=`pwd`
 			if [[ "$where_" = "$HOME" || "$where_" = "/" ]]; then
 				cd $pwd_
+				echo "creating new vitrual environment named venv2"
 				virtualenv venv2
 				source ./venv2/bin/activate;
 				break
@@ -33,6 +34,7 @@ function _venv(){
 			where_=`pwd`
 			if [[ "$where_" = "$HOME" || "$where_" = "/" ]]; then
 				cd $pwd_
+				echo "creating new vitrual environment named venv3"
 				python3 -m venv venv3
 				source ./venv3/bin/activate;
 				break
@@ -49,6 +51,7 @@ function _venv(){
 			where_=`pwd`
 			if [[ "$where_" = "$HOME" || "$where_" = "/" ]]; then
 				cd $pwd_
+				echo "creating new vitrual environment named $1"
 				if [[ "$1" == *"2" ]]; then
 					virtualenv $1
 				else

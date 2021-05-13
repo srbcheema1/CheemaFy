@@ -1,0 +1,101 @@
+#move to particular locations
+alias de='cd ~/Desktop'
+alias cf='cd ~/programs/CheemaFy/'
+
+
+
+alias orig='  # to run original command
+function _orig(){
+	if [ $1 = "--help" ]; then
+		echo "helps to execute orig commands without alias effect"
+		return
+	fi
+
+	echo "$@"
+	$@
+};_orig'
+
+
+
+alias logit='  # to log into a file
+function _logit(){
+	if [ $1 = "--help" ]; then
+		echo "helps to send output of command to a file named srb_log.txt"
+		return
+	fi
+
+	echo "$@ 2>&1 | tee srb_log.txt"
+	$@ 2>&1 | tee srb_log.txt
+};_logit'
+
+
+
+_help_search_dir="
+search_dir <file> <relative-locaton>...    -- search <dir> in given location
+"
+alias _search_dir='
+function __search_dir(){
+	if [ "$1" = "--help" ]
+	then
+		echo "$_help_search_dir"
+		return
+	fi
+
+	if [ "$#" -eq 1 ]; then
+		find . -type d | grep $1
+	elif [ "$#" -eq 2 ]; then
+		find $2 -type d | grep $1
+	else
+		echo "$_help_search_dir"
+	fi
+};__search_dir'
+
+
+_help_search_file="
+search_file <file> <relative-locaton>...    -- search <file> in given location
+"
+alias _search_file='
+function __search_file(){
+	if [ "$1" = "--help" ]
+	then
+		echo "$_help_search_file"
+		return
+	fi
+
+	if [ "$#" -eq 1 ]; then
+		find . -type f | grep $1
+	elif [ "$#" -eq 2 ]; then
+		find $2 -type f | grep $1
+	else
+		echo "$_help_search_file"
+	fi
+};__search_file'
+
+
+_help_search_me="
+search_me <arg1> <arg2>  -- search <arg1> in <arg2>...
+to exclude some files/directories use --exclude-dir=dir_name and --exclude=file_name (only names not path)
+command used: grep -i -I -nr
+"
+alias search_me='
+function _search_me(){
+	if [ "$1" = "--help" ]
+	then
+		echo "$_help_search_me"
+		return
+	fi
+
+	# grep_cmd="grep -i -I -nr"
+	# i for ignore casesenstivity
+	# I for ignoring binary files
+	# n for numbering
+	# r for recursive
+
+	if [ "$#" -eq 1 ]; then
+		grep -i -I -nr "$1" .
+	elif [ "$#" -eq 2 ]; then
+		grep -i -I -nr "$1" "$2"
+	else
+		echo "$_help_search_me"
+	fi
+};_search_me'

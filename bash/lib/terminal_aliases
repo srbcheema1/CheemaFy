@@ -1,0 +1,115 @@
+alias copy='
+function _copy(){
+	_oldpwd=$OLDPWD
+	mkdir -p ~/.CheemaFy/srb_clip_board
+
+	if ! [ -z "$(ls -A $HOME/.CheemaFy/srb_clip_board/)" ]; then
+		cd ~/.CheemaFy/srb_clip_board
+		ls -A | xargs rm -r
+		cd -
+	fi
+
+	cp -r $@ ~/.CheemaFy/srb_clip_board/
+	echo copied $@
+	$OLDPWD=$_oldpwd
+};_copy'
+
+
+alias cutt='
+function _cut(){
+	_oldpwd=$OLDPWD
+	mkdir -p ~/.CheemaFy/srb_clip_board
+
+	if ! [ -z "$(ls -A $HOME/.CheemaFy/srb_clip_board/)" ]; then
+		cd ~/.CheemaFy/srb_clip_board
+		ls -A | xargs rm -r
+		cd -
+	fi
+
+	mv $@ ~/.CheemaFy/srb_clip_board/
+	echo moved $@
+	$OLDPWD=$_oldpwd
+};_cut'
+
+
+alias paste='
+function _paste(){
+	mkdir -p ~/.CheemaFy/srb_clip_board
+
+	if [ -z "$(ls -A $HOME/.CheemaFy/srb_clip_board/)" ]; then
+	   echo "clipboard is empty"
+	else
+		echo "pasting these items : "
+		ls -A ~/.CheemaFy/srb_clip_board/
+		cp -r ~/.CheemaFy/srb_clip_board/. ./
+	fi
+};_paste'
+
+
+
+#trash
+help_trash="
+trash --ls                          --- list items in trash
+trash <filename> [<filename> ,]     --- move given files to trash
+trash -r <file/folder>              --- recover the file or folder
+trash                               --- cd to trash location
+trash --empty                       --- clear all the trash
+trash --loc                         --- print location of trash
+"
+alias trash='
+function _trash(){
+	if  [ "$1" = "--help" ]; then
+		echo "$help_trash"
+		return
+	fi
+
+	_trash_loc="$HOME/.CheemaFy/.Trash"
+	mkdir -p $_trash_loc
+
+	if [ "$1" = "--loc" ]; then
+		echo "location of trash is $_trash_loc"
+		return
+	fi
+
+	_oldpwd=$OLDPWD
+	now=`pwd`
+
+	if [ "$1" = "--ls" ]; then
+		ls -ltrAh $_trash_loc
+
+	elif [ "$1" = "-r" ]; then #restore
+		for i in `seq 2 $#`; do
+			cd $_trash_loc
+			mv ${!i} $now
+		done
+
+	elif [ "$1" = "--empty" ]; then
+		cd $_trash_loc
+		if [[ $(ls -A) ]]; then # only delete when files there.
+			echo "files in trash are : "
+			ls -A
+			echo -n "do you want to delete trash permanently (y/n) : ";
+			read ans;
+			if [ $ans = "y" ]; then
+				ls -A | xargs rm -r
+			fi
+		else
+			echo "trash is already empty"
+		fi
+
+	elif [ "$#" = 0 ]; then #move to location of trash
+		cd $_trash_loc
+		return
+
+	elif [[ "$1" == "--"* ]]; then
+		echo "unrecognised flag $1"
+		echo "$help_trash"
+
+	else
+		echo "moving $@ to $_trash_loc"
+		mv $@ $_trash_loc
+	fi
+
+	cd $now
+	OLDPWD=$_oldpwd
+};_trash'

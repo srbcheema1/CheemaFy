@@ -18,6 +18,13 @@ function _cheemaFy_refresh() {
 }
 
 _cheemaFy_help="
+Available options:
+--help      : display this message
+--status    : tell if CheemaFy is enabled or not.
+--refresh   : refresh any changes did to any function in cheemafy
+--enable    : enable features of CheemaFy
+--diable    : disable features of CheemaFy
+
 Thanks for using CheemaFy
 "
 function CheemaFy(){

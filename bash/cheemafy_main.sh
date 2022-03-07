@@ -23,7 +23,7 @@ Available options:
 --status    : tell if CheemaFy is enabled or not.
 --refresh   : refresh any changes did to any function in cheemafy
 --enable    : enable features of CheemaFy
---diable    : disable features of CheemaFy
+--disable    : disable features of CheemaFy
 
 Thanks for using CheemaFy
 "

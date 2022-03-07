@@ -18,6 +18,10 @@ __*
 # include certain files from ignored files https://stackoverflow.com/a/987162
 !__init__.py
 
+
+# node modules:
+node_modules
+
 # vs files
 .vs
 CMakeSettings.json
